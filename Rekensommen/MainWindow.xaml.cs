@@ -50,7 +50,7 @@ public partial class MainWindow : Window
         operatorLabel.Content = operatorSign;
         secondNumberLabel.Content = number2.ToString();
         
-        StartStopWatch();
+        InitStopWatch();
 
         resultTextBox.Focus();
     }
@@ -85,16 +85,16 @@ public partial class MainWindow : Window
         return 0;
     }
 
-    private void StartStopWatch()
+    private void InitStopWatch()
     {
         _stopWatchStart = DateTime.Now;
 
         _stopWatch.Interval = TimeSpan.FromMilliseconds(1);
-        _stopWatch.Tick += Timer_Tick;
+        _stopWatch.Tick += StopWatch_Tick;
         _stopWatch.Start();
     }
 
-    private void Timer_Tick(object? sender, EventArgs e)
+    private void StopWatch_Tick(object? sender, EventArgs e)
     {
         TimeSpan timeElapsed = DateTime.Now - _stopWatchStart;
         timerLabel.Content = timeElapsed.ToString(@"mm\:ss\:fff");
