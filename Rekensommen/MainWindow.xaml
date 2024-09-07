@@ -59,8 +59,8 @@
         </GroupBox>
         <GroupBox Header="Bewerkingen" Margin="10" Grid.Column="2" Padding="10">
             <StackPanel>
-                <CheckBox Content="Optellen" IsChecked="True" Margin="5" Visibility="Hidden"/>
-                <CheckBox Content="Aftrekken" IsChecked="True" Margin="5" Visibility="Hidden"/>
+                <CheckBox Content="Optellen" IsChecked="True" Margin="5" Name="addOperatorCheckBox"/>
+                <CheckBox Content="Aftrekken" IsChecked="True" Margin="5" Name="subtractOperatorCheckBox"/>
             </StackPanel>
         </GroupBox>
         <GroupBox Header="Uitkomst"  Grid.Column="3" Grid.ColumnSpan="2" 
@@ -68,15 +68,15 @@
             <StackPanel>
                 <Label Content="Negatieve getallen toelaten?"/>
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                    <RadioButton Content="Ja" Margin="0 0 10 5" IsChecked="True" Visibility="Hidden"/>
-                    <RadioButton Content="Nee" Margin="0 0 10 5" Name="disallowNegativeRadioButton" Visibility="Hidden"/>
+                    <RadioButton Content="Ja" Margin="0 0 10 5" IsChecked="True" />
+                    <RadioButton Content="Nee" Margin="0 0 10 5" Name="disallowNegativeRadioButton" />
                 </StackPanel>
                 <Label Content="Maximum toepassen?"/>
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                    <RadioButton Content="Ja" Margin="0 0 10 0" Height="25" VerticalContentAlignment="Center" Name="applyMaximumRadioButton" Visibility="Hidden"/>
-                    <RadioButton Content="Nee" Margin="0 0 10 0" Height="25" VerticalContentAlignment="Center" IsChecked="True" Visibility="Hidden" />
-                    <Label Content="Maximum:" Height="25" VerticalContentAlignment="Center" Visibility="Hidden"/>
-                    <TextBox Text="100" Name="maximumResultTextBox" Visibility="Hidden"
+                    <RadioButton Content="Ja" Margin="0 0 10 0" Height="25" VerticalContentAlignment="Center" Name="applyMaximumRadioButton" Checked="ApplyMaximum_CheckChanged" Unchecked="ApplyMaximum_CheckChanged" />
+                    <RadioButton Content="Nee" Margin="0 0 10 0" Height="25" VerticalContentAlignment="Center" IsChecked="True"  />
+                    <Label Content="Maximum:" Height="25" VerticalContentAlignment="Center" />
+                    <TextBox Text="100" Name="maximumResultTextBox" 
                              Height="25" VerticalContentAlignment="Center" IsEnabled="False"/>
                 </StackPanel>
             </StackPanel>

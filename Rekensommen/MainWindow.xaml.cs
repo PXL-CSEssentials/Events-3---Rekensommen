@@ -41,9 +41,9 @@ public partial class MainWindow : Window
         resultTextBox.Background = Brushes.White;
         resultTextBox.IsEnabled = true;
 
-        GetRandomNumbers(out int number1, out int number2);
-        
         string operatorSign = GetRandomOperator();
+        GetRandomNumbers(out int number1, out int number2, operatorSign);
+        
         _expectedResult = CalculateResult(ref number1, ref number2, ref operatorSign);
 
         firstNumberLabel.Content = number1.ToString();
@@ -55,15 +55,61 @@ public partial class MainWindow : Window
         resultTextBox.Focus();
     }
 
-    private void GetRandomNumbers(out int number1, out int number2)
+    private void GetRandomNumbers(out int number1, out int number2, string operatorSign)
     {
-        number1 = _randomGenerator.Next(1, 101);
-        number2 = _randomGenerator.Next(1, 101);
+        //TODO: bugfix when the maximum value is set
+        int number1Min = int.Parse(firstNumberMinTextBox.Text);
+        int number1Max = int.Parse(firstNumberMaxTextBox.Text);
+        int number2Min = int.Parse(secondNumberMinTextBox.Text);
+        int number2Max = int.Parse(secondNumberMaxTextBox.Text);
+
+        if (operatorSign.Equals("+") && applyMaximumRadioButton.IsChecked.Value)
+        {
+            int maxOutcome = int.Parse(maximumResultTextBox.Text);
+
+            number1 = _randomGenerator.Next(number1Min, GetMaxValue(maxOutcome, number1Max) + 1);
+            number2 = _randomGenerator.Next(0, GetMaxValue(maxOutcome - number1, number2Max) + 1);
+
+        }
+        else if (operatorSign.Equals("-") && disallowNegativeRadioButton.IsChecked.Value)
+        {
+            number1 = _randomGenerator.Next(number1Min, number1Max + 1);
+            number2 = _randomGenerator.Next(1, number1 + 1);
+        }
+        else
+        {
+            number1 = _randomGenerator.Next(number1Min, number1Max + 1);
+            number2 = _randomGenerator.Next(number2Min, number2Max + 1);
+        }
+    }
+
+    private int GetMaxValue(int value1, int value2)
+    {
+        if(value1 > value2)
+        {
+            return value1;
+        }
+        else
+        {
+            return value2;
+        }
     }
 
     private string GetRandomOperator()
     {
-        switch(_randomGenerator.Next(0, 2))
+        int min = 0;
+        int max = 1;
+
+        if(!addOperatorCheckBox.IsChecked.Value)
+        {
+            min = 1;
+        }
+        if (!subtractOperatorCheckBox.IsChecked.Value)
+        {
+            max = 0;
+        }
+
+        switch (_randomGenerator.Next(min, max + 1))
         {
             case 0:
                 return "+";
