@@ -24,16 +24,8 @@ public partial class MainWindow : Window
 
     Random _randomGenerator = new Random();
     int _expectedResult;
-    DateTime _stopWatchStart;
-    DispatcherTimer _stopWatch = new DispatcherTimer();
 
-    private void equalsLabel_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-    {
-        if(e.ChangedButton == MouseButton.Left)
-        {
-            StartExercise();
-        }
-    }
+
 
     private void StartExercise()
     {
@@ -69,37 +61,6 @@ public partial class MainWindow : Window
         return number1 + number2;
     }
 
-    private void InitStopWatch()
-    {
-        _stopWatchStart = DateTime.Now;
-
-        _stopWatch.Interval = TimeSpan.FromMilliseconds(1);
-        _stopWatch.Tick += Timer_Tick;
-        _stopWatch.Start();
-    }
-
-    private void Timer_Tick(object? sender, EventArgs e)
-    {
-        TimeSpan timeElapsed = DateTime.Now - _stopWatchStart;
-        timerLabel.Content = timeElapsed.ToString(@"mm\:ss\:fff");
-    }
-
-    private void resultTextBox_KeyDown(object sender, KeyEventArgs e)
-    {
-        if (e.Key == Key.Enter)
-        {
-            if (CheckResult((TextBox)sender))
-            {
-                _stopWatch.Stop();
-                resultTextBox.IsEnabled = false;
-            }
-            else
-            {
-                resultTextBox.SelectAll();
-            }
-        }
-    }
-
     private bool CheckResult(TextBox textBox)
     {
         //TODO:
@@ -109,15 +70,5 @@ public partial class MainWindow : Window
         //TIP: use TryParse
 
         throw new NotImplementedException(); //Remove this line
-    }
-
-    private void showTimeButton_Click(object sender, RoutedEventArgs e)
-    {
-        MessageBox.Show(DateTime.Now.ToString("ddd dd MMMM yyyy HH:mm"), "Datum en tijd", MessageBoxButton.OK, MessageBoxImage.Information);
-    }
-
-    private void ApplyMaximum_CheckChanged(object sender, RoutedEventArgs e)
-    {
-        maximumResultTextBox.IsEnabled = applyMaximumRadioButton.IsChecked!.Value;
     }
 }
