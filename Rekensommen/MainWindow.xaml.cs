@@ -24,8 +24,8 @@ public partial class MainWindow : Window
 
     Random _randomGenerator = new Random();
     int _expectedResult;
-    DateTime _stopWatchStart;
-    DispatcherTimer _timer = new DispatcherTimer();
+    //DateTime _stopWatchStart;
+    //DispatcherTimer _timer = new DispatcherTimer();
 
     private void equalsLabel_MouseDoubleClick(object sender, MouseButtonEventArgs e)
     {
@@ -138,7 +138,7 @@ public partial class MainWindow : Window
         }
     }
 
-    private void RangeChanged(object sender, TextChangedEventArgs e)
+    private void Range_TextChanged(object sender, TextChangedEventArgs e)
     {
         TextBox textBox = (TextBox)sender;
         //TextBox textBox = sender as TextBox;
@@ -161,5 +161,26 @@ public partial class MainWindow : Window
         }
 
         //If no condition is met, the background will still be white
+    }
+
+    private void Range_KeyDown(object sender, KeyEventArgs e)
+    {
+        if(e.Key >= Key.D0 && e.Key <= Key.D9 && e.KeyboardDevice.Modifiers == ModifierKeys.Shift)
+        {
+            e.Handled = false;
+        }
+        else if (e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9)
+        {
+            e.Handled = false;
+        }
+        else
+        {
+            e.Handled = true;
+        }
+    }
+
+    private void showTimeButton_Click(object sender, RoutedEventArgs e)
+    {
+        MessageBox.Show(DateTime.Now.ToString("ddd dd MMMM yyyy HH:mm"), "Datum en tijd", MessageBoxButton.OK, MessageBoxImage.Information);
     }
 }
