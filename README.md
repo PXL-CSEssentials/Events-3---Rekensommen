@@ -82,7 +82,7 @@ textBox.Background = Brushes.LightCoral;
 - Voeg 2 RadioButtons, een Label en een TextBox toe onder het label met de tekst "Maximum toepassen". 
 	- Gebruik een marge van 10 rechts 
 	- Geef de eerste RadioButton de naam *applyMaximumRadioButton* 
-	- Geef de TextBox de naam *maximumResultTextBox* 
+	- Geef de TextBox de naam *maximumResultTextBox* en zorg ervoor dat er enkel gehele getallen kunnen ingevoerd worden
 	- De TextBox is enkel *Enabled* wanneer de RadioButton "Ja" is aangevinkt
 	> Tip: Maak een *ApplyMaximum_CheckChanged* event-procedure aan voor zowel het *Checked* als *Unchecked* event van de *applyMaximumRadioButton*
 - Pas de *GetRandomNumbers* methode aan om de functionaliteit van deze RadioButtons te implementeren. 
