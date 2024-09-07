@@ -24,7 +24,7 @@ public partial class MainWindow : Window
 
     Random _randomGenerator = new Random();
     int _expectedResult;
-    DateTime _stopWatchStart;
+    DateTime _stopWatchBegin;
     DispatcherTimer _stopWatch = new DispatcherTimer();
 
     private void equalsLabel_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -87,7 +87,7 @@ public partial class MainWindow : Window
 
     private void InitStopWatch()
     {
-        _stopWatchStart = DateTime.Now;
+        _stopWatchBegin = DateTime.Now;
 
         _stopWatch.Interval = TimeSpan.FromMilliseconds(1);
         _stopWatch.Tick += StopWatch_Tick;
@@ -96,7 +96,7 @@ public partial class MainWindow : Window
 
     private void StopWatch_Tick(object? sender, EventArgs e)
     {
-        TimeSpan timeElapsed = DateTime.Now - _stopWatchStart;
+        TimeSpan timeElapsed = DateTime.Now - _stopWatchBegin;
         timerLabel.Content = timeElapsed.ToString(@"mm\:ss\:fff");
     }
 
