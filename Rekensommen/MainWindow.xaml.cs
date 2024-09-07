@@ -24,8 +24,8 @@ public partial class MainWindow : Window
 
     Random _randomGenerator = new Random();
     int _expectedResult;
-    //DateTime _stopWatchStart;
-    //DispatcherTimer _timer = new DispatcherTimer();
+    DateTime _stopWatchStart;
+    DispatcherTimer _timer = new DispatcherTimer();
 
     private void equalsLabel_MouseDoubleClick(object sender, MouseButtonEventArgs e)
     {
@@ -104,7 +104,7 @@ public partial class MainWindow : Window
     {
         if (e.Key == Key.Enter)
         {
-            if (CheckResult())
+            if (CheckResult((TextBox)sender))
             {
                 _timer.Stop();
                 resultTextBox.IsEnabled = false;
@@ -116,24 +116,28 @@ public partial class MainWindow : Window
         }
     }
 
-    private bool CheckResult()
+    private bool CheckResult(TextBox textBox)
     {
-        if (int.TryParse(resultTextBox.Text, out int result))
+        //TODO:
+        //check if the input from resultTextBox is a number
+        //check if the input is equal to _expectedResult
+
+        if (int.TryParse(textBox.Text, out int result))
         {
             if (result == _expectedResult)
             {
-                resultTextBox.Background = Brushes.LightGreen;
+                textBox.Background = Brushes.LightGreen;
                 return true;
             }
             else
             {
-                resultTextBox.Background = Brushes.LightCoral;
+                textBox.Background = Brushes.LightCoral;
                 return false;
             }
         }
         else
         {
-            resultTextBox.Background = Brushes.LightCoral;
+            textBox.Background = Brushes.LightCoral;
             return false;
         }
     }
