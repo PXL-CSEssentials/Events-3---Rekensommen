@@ -32,7 +32,12 @@ textBox.Background = Brushes.LightCoral;
 
 ## Deel 5 - KeyDown
 - Maak een ***resultTextBox_KeyDown*** event-procedure aan voor de *resultTextBox*
-- Zorg ervoor dat de CheckResult-methode wordt uitgevoerd wanneer de gebruiker op de *Enter*-toets drukt
+- Zorg ervoor dat de CheckResult-functie wordt uitgevoerd wanneer de gebruiker op de *Enter*-toets drukt
+	- Indien succesvol: wijzig de *IsEnabled*-eigenschap van de *resultTextBox* naar *false*
+	- Indien foutief: selecteer de tekst in de *resultTextBox* zodat de gebruiker een nieuwe poging kan doen
+
+## Deel 6 - StopWatch (DispatcherTimer)
+- Maak een ***DispatcherTimer*** aan in de *MainWindow*-klasse met de naam *_stopWatch*
 
 ## Deel X - DateTime
 - Toon een messagebox met de huidige datum en tijd wanneer de gebruiker op de *showTimeButton* klikt
@@ -40,7 +45,7 @@ textBox.Background = Brushes.LightCoral;
 
 ![media/rekensommen-showtime.png](media/rekensommen-showtime.png)
 
-## Deel X - Bewerkingen (Operators)
+## Deel X - Bewerkingen (CheckBox)
 ![media/rekensommen-bewerkingen.png](media/rekensommen-bewerkingen.png)
 - Voeg een CheckBox toe in de *Bewerkingen*-GroupBox. Gebruik de benamingen:
 	- addOperatorCheckBox
@@ -54,6 +59,10 @@ textBox.Background = Brushes.LightCoral;
 	- Bij een waarde 1 wordt "-" teruggegeven
 - Hou rekening met de *addOperatorCheckBox* en *subtractOperatorCheckBox* om te bepalen welke bewerkingen mogelijk zijn
 - Gebruik deze functie in de *StartExercise*-methode om de bewerking te bepalen. Tip: ook de berekening van de uitkomst moet aangepast worden
+
+## Deel X - Uitkomst (RadioButton)
+![media/rekensommen-uitkomst.png](media/rekensommen-uitkomst.png)
+
 
 ## Extra
 - Toon een messagebox wanneer een nieuwe *snelste tijd* behaald wordt. Maak hiervoor een klasse variabele aan met de naam *_highScore* van het type *TimeSpan*

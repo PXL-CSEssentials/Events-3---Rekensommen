@@ -25,7 +25,7 @@ public partial class MainWindow : Window
     Random _randomGenerator = new Random();
     int _expectedResult;
     DateTime _stopWatchStart;
-    DispatcherTimer _timer = new DispatcherTimer();
+    DispatcherTimer _stopWatch = new DispatcherTimer();
 
     private void equalsLabel_MouseDoubleClick(object sender, MouseButtonEventArgs e)
     {
@@ -73,9 +73,9 @@ public partial class MainWindow : Window
     {
         _stopWatchStart = DateTime.Now;
 
-        _timer.Interval = TimeSpan.FromMilliseconds(1);
-        _timer.Tick += Timer_Tick;
-        _timer.Start();
+        _stopWatch.Interval = TimeSpan.FromMilliseconds(1);
+        _stopWatch.Tick += Timer_Tick;
+        _stopWatch.Start();
     }
 
     private void Timer_Tick(object? sender, EventArgs e)
@@ -90,7 +90,7 @@ public partial class MainWindow : Window
         {
             if (CheckResult((TextBox)sender))
             {
-                _timer.Stop();
+                _stopWatch.Stop();
                 resultTextBox.IsEnabled = false;
             }
             else
@@ -105,7 +105,9 @@ public partial class MainWindow : Window
         //TODO:
         //check if the input from resultTextBox is a number
         //check if the input is equal to _expectedResult
+        //TIP: use TryParse
 
+        throw new NotImplementedException(); //Remove this line
     }
 
     private void Range_TextChanged(object sender, TextChangedEventArgs e)
