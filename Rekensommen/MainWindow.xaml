@@ -69,11 +69,11 @@
                 <Label Content="Negatieve getallen toelaten?"/>
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                     <RadioButton Content="Ja" Margin="0 0 10 5" IsChecked="True" Visibility="Visible"/>
-                    <RadioButton Content="Nee" Margin="0 0 10 5" Name="disallowNegativeRadioButton" Visibility="Visible"/>
+                    <RadioButton Content="Nee" Margin="0 0 10 5" Name="disallowNegativeOutcomeRadioButton" Visibility="Visible"/>
                 </StackPanel>
                 <Label Content="Maximum toepassen?"/>
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                    <RadioButton Content="Ja" Margin="0 0 10 0" Height="25" VerticalContentAlignment="Center" Name="applyMaximumRadioButton" Visibility="Visible"/>
+                    <RadioButton Content="Ja" Margin="0 0 10 0" Height="25" VerticalContentAlignment="Center" Name="applyMaximumRadioButton" Visibility="Visible" Checked="ApplyMaximum_CheckChanged" Unchecked="ApplyMaximum_CheckChanged"/>
                     <RadioButton Content="Nee" Margin="0 0 10 0" Height="25" VerticalContentAlignment="Center" IsChecked="True" Visibility="Visible" />
                     <Label Content="Maximum:" Height="25" VerticalContentAlignment="Center" Visibility="Visible"/>
                     <TextBox Text="100" Name="maximumResultTextBox" Visibility="Visible"

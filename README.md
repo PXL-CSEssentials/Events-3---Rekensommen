@@ -36,6 +36,10 @@ textBox.Background = Brushes.LightCoral;
 	- Indien succesvol: wijzig de *IsEnabled*-eigenschap van de *resultTextBox* naar *false*
 	- Indien foutief: selecteer de tekst in de *resultTextBox* zodat de gebruiker een nieuwe poging kan doen
 
+### Deel 5.1 - CheckResult
+- Vervolledig de CheckResult-functie zodat de inhoud van de textbox die als parameter wordt meegegeven, wordt gecontroleerd met de uitkomst van de berekening.
+- Wijzig de achtergrondkleur van de textbox naar *LightGreen* indien de uitkomst correct is, anders naar *LightCoral*
+
 ## Deel 6 - DateTime
 - Toon een messagebox met de huidige datum en tijd wanneer de gebruiker op de *showTimeButton* klikt
 - Experimenteer met de aangepaste datum- en tijdnotatie (zie [DateTime.ToString](https://learn.microsoft.com/nl-be/dotnet/standard/base-types/custom-date-and-time-format-strings))
@@ -52,17 +56,17 @@ textBox.Background = Brushes.LightCoral;
 	- de *Tick*-event koppelt aan een event-procedure *StopWatch_Tick*
 	- de *Start*-methode uitvoert van de _stopWatch
 - Zorg ervoor dat in de *StopWatch_Tick* event-procedure de verstreken tijd getoond wordt in het *timerLabel*. 
-Tip: Maak een klasse variabele *_stopWatchBegin* aan van het type DateTime en berekend telkens het verschil.
+	>Tip: Maak een klasse variabele *_stopWatchBegin* aan van het type DateTime en berekend telkens het verschil met de huidige tijd.
+- Voer de *InitStopWatch*-methode uit in de *StartExercise*-methode (TODO 3)
 
-
-## Deel X - Bewerkingen (CheckBox)
+## Deel 8 - Bewerkingen (CheckBox)
 ![media/rekensommen-bewerkingen.png](media/rekensommen-bewerkingen.png)
 - Voeg een CheckBox toe in de *Bewerkingen*-GroupBox. Gebruik de benamingen:
 	- addOperatorCheckBox
 	- subtractOperatorCheckBox
 - Beide zijn standaard aangevinkt en hebben een marge van 5
 
-## Deel X - GetRandomOperator
+### Deel 8.1 - GetRandomOperator
 - Maak een functie aan met de naam *GetRandomOperator* die een "+" of een "-" bewerking (string) teruggeeft. 
 - Gebruik de *Random*-klasse om een willekeurig getal te genereren tussen 0 en 1
 	- Bij een waarde 0 wordt "+" teruggegeven
@@ -70,9 +74,24 @@ Tip: Maak een klasse variabele *_stopWatchBegin* aan van het type DateTime en be
 - Hou rekening met de *addOperatorCheckBox* en *subtractOperatorCheckBox* om te bepalen welke bewerkingen mogelijk zijn
 - Gebruik deze functie in de *StartExercise*-methode om de bewerking te bepalen. Tip: ook de berekening van de uitkomst moet aangepast worden
 
-## Deel X - Uitkomst (RadioButton)
+## Deel 9 - Uitkomst (RadioButton)
 ![media/rekensommen-uitkomst.png](media/rekensommen-uitkomst.png)
+- Voeg 2 RadioButtons toe onder het label met de tekst "Negatieve getallen toestaan". 
+	- Gebruik een marge van 10 rechts en 5 onderaan
+	- Geef de tweede RadioButton de naam *disallowNegativeOutcomeRadioButton* 
+- Voeg 2 RadioButtons, een Label en een TextBox toe onder het label met de tekst "Maximum toepassen". 
+	- Gebruik een marge van 10 rechts 
+	- Geef de eerste RadioButton de naam *applyMaximumRadioButton* 
+	- Geef de TextBox de naam *maximumResultTextBox* 
+	- De TextBox is enkel *Enabled* wanneer de RadioButton "Ja" is aangevinkt
+	> Tip: Maak een *ApplyMaximum_CheckChanged* event-procedure aan voor zowel het *Checked* als *Unchecked* event van de *applyMaximumRadioButton*
+- Pas de *GetRandomNumbers* methode aan om de functionaliteit van deze RadioButtons te implementeren. 
+	- Indien de *disallowNegativeOutcomeRadioButton* is aangevinkt, mag de uitkomst niet negatief zijn
+	- Indien de *applyMaximumRadioButton* is aangevinkt, mag de som niet groter zijn dan de waarde in de *maximumResultTextBox*
 
+## Deel 10 - Image
+- Voeg een image toe als inhoud van de *showTimeButton*
+- Gebruik de *Source*-eigenschap om de afbeelding *clock.png* in te stellen
 
 ## Extra
 - Toon een messagebox wanneer een nieuwe *snelste tijd* behaald wordt. Maak hiervoor een klasse variabele aan met de naam *_highScore* van het type *TimeSpan*
