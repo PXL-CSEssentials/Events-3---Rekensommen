@@ -24,8 +24,8 @@ public partial class MainWindow : Window
 
     Random _randomGenerator = new Random();
     int _expectedResult;
-    //DateTime _stopWatchStart;
-    //DispatcherTimer _timer = new DispatcherTimer();
+    DateTime _stopWatchStart;
+    DispatcherTimer _timer = new DispatcherTimer();
 
     private void equalsLabel_MouseDoubleClick(object sender, MouseButtonEventArgs e)
     {
@@ -41,16 +41,18 @@ public partial class MainWindow : Window
         resultTextBox.Background = Brushes.White;
         resultTextBox.IsEnabled = true;
 
-        GetRandomNumbers(out int number1, out int number2);
-        
-        string operatorSign = GetRandomOperator();
-        _expectedResult = CalculateResult(ref number1, ref number2, ref operatorSign);
+        int number1 = 0;
+        int number2 = 0;
+
+        //TODO 1: call GetRandomNumbers
+
+        //TODO 2: call CalculateResult and store the result in _expectedResult
 
         firstNumberLabel.Content = number1.ToString();
-        operatorLabel.Content = operatorSign;
+        operatorLabel.Content = "+";
         secondNumberLabel.Content = number2.ToString();
-        
-        StartStopWatch();
+
+        //TODO 3: call StartStopWatch
 
         resultTextBox.Focus();
     }
@@ -61,28 +63,10 @@ public partial class MainWindow : Window
         number2 = _randomGenerator.Next(1, 101);
     }
 
-    private string GetRandomOperator()
-    {
-        switch(_randomGenerator.Next(0, 2))
-        {
-            case 0:
-                return "+";
-            case 1:
-                return "-";
-        }
-        return string.Empty;
-    }
 
-    private int CalculateResult(ref int number1, ref int number2, ref string operatorSign)
+    private int CalculateResult(ref int number1, ref int number2)
     {
-        switch (operatorSign)
-        {
-            case "+":
-                return number1 + number2;
-            case "-":
-                return number1 - number2;
-        }
-        return 0;
+        return number1 + number2;
     }
 
     private void StartStopWatch()
@@ -104,7 +88,7 @@ public partial class MainWindow : Window
     {
         if (e.Key == Key.Enter)
         {
-            if (CheckResult())
+            if (CheckResult((TextBox)sender))
             {
                 _timer.Stop();
                 resultTextBox.IsEnabled = false;
@@ -116,26 +100,12 @@ public partial class MainWindow : Window
         }
     }
 
-    private bool CheckResult()
+    private bool CheckResult(TextBox textBox)
     {
-        if (int.TryParse(resultTextBox.Text, out int result))
-        {
-            if (result == _expectedResult)
-            {
-                resultTextBox.Background = Brushes.LightGreen;
-                return true;
-            }
-            else
-            {
-                resultTextBox.Background = Brushes.LightCoral;
-                return false;
-            }
-        }
-        else
-        {
-            resultTextBox.Background = Brushes.LightCoral;
-            return false;
-        }
+        //TODO:
+        //check if the input from resultTextBox is a number
+        //check if the input is equal to _expectedResult
+
     }
 
     private void Range_TextChanged(object sender, TextChangedEventArgs e)

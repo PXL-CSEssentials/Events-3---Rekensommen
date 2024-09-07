@@ -59,8 +59,8 @@
         </GroupBox>
         <GroupBox Header="Bewerkingen" Margin="10" Grid.Column="2" Padding="10">
             <StackPanel>
-                <CheckBox Content="Optellen" IsChecked="True" Margin="5" Visibility="Hidden"/>
-                <CheckBox Content="Aftrekken" IsChecked="True" Margin="5" Visibility="Hidden"/>
+                <CheckBox Content="Optellen" IsChecked="True" Margin="5" />
+                <CheckBox Content="Aftrekken" IsChecked="True" Margin="5" />
             </StackPanel>
         </GroupBox>
         <GroupBox Header="Uitkomst"  Grid.Column="3" Grid.ColumnSpan="2" 
