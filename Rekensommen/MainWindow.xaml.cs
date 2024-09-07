@@ -52,7 +52,7 @@ public partial class MainWindow : Window
         operatorLabel.Content = "+";
         secondNumberLabel.Content = number2.ToString();
 
-        //TODO 3: call StartStopWatch
+        //TODO 3: call InitStopWatch
 
         resultTextBox.Focus();
     }
@@ -69,7 +69,7 @@ public partial class MainWindow : Window
         return number1 + number2;
     }
 
-    private void StartStopWatch()
+    private void InitStopWatch()
     {
         _stopWatchStart = DateTime.Now;
 
