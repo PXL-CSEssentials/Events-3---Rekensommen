@@ -57,7 +57,6 @@ public partial class MainWindow : Window
 
     private void GetRandomNumbers(out int number1, out int number2, string operatorSign)
     {
-        //TODO: bugfix when the maximum value is set
         int number1Min = int.Parse(firstNumberMinTextBox.Text);
         int number1Max = int.Parse(firstNumberMaxTextBox.Text);
         int number2Min = int.Parse(secondNumberMinTextBox.Text);
@@ -67,8 +66,8 @@ public partial class MainWindow : Window
         {
             int maxOutcome = int.Parse(maximumResultTextBox.Text);
 
-            number1 = _randomGenerator.Next(number1Min, GetMaxValue(maxOutcome, number1Max) + 1);
-            number2 = _randomGenerator.Next(0, GetMaxValue(maxOutcome - number1, number2Max) + 1);
+            number1 = _randomGenerator.Next(number1Min, GetMinValue(maxOutcome, number1Max) + 1);
+            number2 = _randomGenerator.Next(0, GetMinValue(maxOutcome - number1, number2Max) + 1);
 
         }
         else if (operatorSign.Equals("-") && disallowNegativeRadioButton.IsChecked.Value)
@@ -83,9 +82,9 @@ public partial class MainWindow : Window
         }
     }
 
-    private int GetMaxValue(int value1, int value2)
+    private int GetMinValue(int value1, int value2)
     {
-        if(value1 > value2)
+        if(value1 < value2)
         {
             return value1;
         }
@@ -164,7 +163,6 @@ public partial class MainWindow : Window
 
     private bool CheckResult(TextBox textBox)
     {
-        //TODO:
         //check if the input from resultTextBox is a number
         //check if the input is equal to _expectedResult
 
