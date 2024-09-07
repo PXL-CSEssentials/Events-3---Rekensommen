@@ -37,7 +37,11 @@ textBox.Background = Brushes.LightCoral;
 	- Indien foutief: selecteer de tekst in de *resultTextBox* zodat de gebruiker een nieuwe poging kan doen
 
 ## Deel 6 - StopWatch (DispatcherTimer)
-- Maak een ***DispatcherTimer*** aan in de *MainWindow*-klasse met de naam *_stopWatch*
+- Maak een ***DispatcherTimer*** aan als klasse variabele met de naam *_stopWatch*
+	```
+	DispatcherTimer _stopWatch = new DispatcherTimer();
+	```
+- Maak een *InitStopWatch*-methode aan die de interval van de timer instelt op 1ms en de *Tick*-event koppelt aan een event-procedure *StopWatch_Tick*
 
 ## Deel X - DateTime
 - Toon een messagebox met de huidige datum en tijd wanneer de gebruiker op de *showTimeButton* klikt
