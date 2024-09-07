@@ -187,4 +187,9 @@ public partial class MainWindow : Window
     {
         MessageBox.Show(DateTime.Now.ToString("ddd dd MMMM yyyy HH:mm"), "Datum en tijd", MessageBoxButton.OK, MessageBoxImage.Information);
     }
+
+    private void ApplyMaximum_CheckChanged(object sender, RoutedEventArgs e)
+    {
+        maximumResultTextBox.IsEnabled = applyMaximumRadioButton.IsChecked!.Value;
+    }
 }
