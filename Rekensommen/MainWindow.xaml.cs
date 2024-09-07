@@ -38,7 +38,7 @@ public partial class MainWindow : Window
     private void StartExercise()
     {
         resultTextBox.Clear();
-        resultTextBox.Background = Brushes.Transparent;
+        resultTextBox.Background = Brushes.White;
         resultTextBox.IsEnabled = true;
 
         GetRandomNumbers(out int number1, out int number2);
@@ -136,5 +136,30 @@ public partial class MainWindow : Window
             resultTextBox.Background = Brushes.LightCoral;
             return false;
         }
+    }
+
+    private void RangeChanged(object sender, TextChangedEventArgs e)
+    {
+        TextBox textBox = (TextBox)sender;
+        //TextBox textBox = sender as TextBox;
+
+        //By default the background is white
+        textBox.Background = Brushes.White;
+
+        if (int.TryParse(textBox.Text, out int number))
+        {
+            if (number < 0 || number > 100)
+            {
+                //If the number is out of range, the background will be lightcoral
+                textBox.Background = Brushes.LightCoral;
+            }
+        }
+        else
+        {
+            //If the input is not a number, the background will be lightcoral
+            textBox.Background = Brushes.LightCoral;
+        }
+
+        //If no condition is met, the background will still be white
     }
 }

@@ -43,16 +43,16 @@
                 <StackPanel Grid.Column="0" Margin="5">
                     <Label Content="Getal1" FontWeight="Bold" Margin="5 0"/>
                     <Label Content="Van: " Margin="10 0" Padding="0"/>
-                    <TextBox Text="0" Margin="10,0,10,10" Name="firstNumberMinTextBox" TextAlignment="Right"/>
+                    <TextBox Text="0" Margin="10,0,10,10" Name="firstNumberMinTextBox" TextAlignment="Right" TextChanged="RangeChanged"/>
                     <Label Content="Tot: " Margin="10 0" Padding="0"/>
-                    <TextBox Text="100" Margin="10,0,10,10" Name="firstNumberMaxTextBox" TextAlignment="Right"/>
+                    <TextBox Text="100" Margin="10,0,10,10" Name="firstNumberMaxTextBox" TextAlignment="Right" TextChanged="RangeChanged"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1" Margin="5">
                     <Label Content="Getal2" FontWeight="Bold" Margin="5 0"/>
                     <Label Content="Van: " Margin="10 0" Padding="0"/>
-                    <TextBox Text="0" Margin="10,0,10,10" Name="secondNumberMinTextBox" TextAlignment="Right"/>
+                    <TextBox Text="0" Margin="10,0,10,10" Name="secondNumberMinTextBox" TextAlignment="Right" TextChanged="RangeChanged"/>
                     <Label Content="Tot: " Margin="10 0" Padding="0"/>
-                    <TextBox Text="100" Margin="10 0" Name="secondNumberMaxTextBox" TextAlignment="Right"/>
+                    <TextBox Text="100" Margin="10 0" Name="secondNumberMaxTextBox" TextAlignment="Right" TextChanged="RangeChanged"/>
                 </StackPanel>
             </Grid>
         </GroupBox>
@@ -67,12 +67,12 @@
             <StackPanel>
                 <Label Content="Negatieve getallen toelaten?"/>
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                    <RadioButton Content="Ja" Margin="0 0 10 5" IsChecked="True"/>
-                    <RadioButton Content="Nee" Margin="0 0 10 5" />
+                    <RadioButton Content="Ja" Margin="0 0 10 5" IsChecked="True" />
+                    <RadioButton Content="Nee" Margin="0 0 10 5" Name="disallowNegativeRadioButton"/>
                 </StackPanel>
                 <Label Content="Maximum toepassen?"/>
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                    <RadioButton Content="Ja" Margin="0 0 10 0" Height="25" VerticalContentAlignment="Center" />
+                    <RadioButton Content="Ja" Margin="0 0 10 0" Height="25" VerticalContentAlignment="Center" Name="applyMaximumRadioButton"/>
                     <RadioButton Content="Nee" Margin="0 0 10 0" Height="25" VerticalContentAlignment="Center" IsChecked="True" />
                     <Label Content="Maximum:" Height="25" VerticalContentAlignment="Center"/>
                     <TextBox Text="100" Name="maximumResultTextBox"
